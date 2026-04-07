@@ -52,9 +52,16 @@ public class LoginFrame extends JFrame {
         loginButton.setFocusPainted(false);
         gbc.gridx = 0; gbc.gridy = 3; gbc.gridwidth = 2; gbc.anchor = GridBagConstraints.CENTER;
         mainPanel.add(loginButton, gbc);
-
+/*
         // Info Label
         JLabel infoLabel = new JLabel("<html><center>Default: admin/admin123<br>sales1/admin123<br>service1/admin123</center></html>");
+        infoLabel.setFont(new Font("Arial", Font.PLAIN, 10));
+        infoLabel.setForeground(Color.GRAY);
+        gbc.gridy = 4;
+        mainPanel.add(infoLabel, gbc);
+*/
+
+        JLabel infoLabel = new JLabel("<html><center>DMS - Dealership Management System <br> 2026 </br></center></html>");
         infoLabel.setFont(new Font("Arial", Font.PLAIN, 10));
         infoLabel.setForeground(Color.GRAY);
         gbc.gridy = 4;

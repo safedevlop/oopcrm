@@ -7,6 +7,7 @@ import java.awt.*;
 import java.sql.Date;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 public class SalesPanel extends JPanel {
     private JTable salesTable;
@@ -28,6 +29,11 @@ public class SalesPanel extends JPanel {
         String[] columns = {"Sale ID", "Vehicle ID", "Customer", "Employee ID", "Sale Date", "Price", "Payment"};
         tableModel = new DefaultTableModel(columns, 0);
         salesTable = new JTable(tableModel);
+        
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(tableModel);
+        sorter.setSortKeys(java.util.List.of(new RowSorter.SortKey(0, SortOrder.ASCENDING)));
+        salesTable.setRowSorter(sorter);
+        
         add(new JScrollPane(salesTable), BorderLayout.CENTER);
 
         JPanel buttonPanel = new JPanel();
@@ -158,7 +164,7 @@ public class SalesPanel extends JPanel {
             return;
         }
 
-        int saleId = (int) tableModel.getValueAt(row, 0);
+        int saleId = (int) tableModel.getValueAt(salesTable.convertRowIndexToModel(row), 0);
         
         try {
             Sale sale = saleDAO.getSaleById(saleId);
